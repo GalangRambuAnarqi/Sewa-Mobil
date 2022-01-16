@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
+
+Route::get('/login', [LoginController::class, 'login'])->name('login')->middleware('guest');
+Route::get('/register', [LoginController::class, 'register'])->name('register')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('auth');
+Route::post('/register', [LoginController::class, 'register_tambah'])->name('register.tambah');
+
+Route::get('/home', [LoginController::class, 'home'])->name('home')->middleware('auth');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
