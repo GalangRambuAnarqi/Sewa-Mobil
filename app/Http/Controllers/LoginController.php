@@ -66,7 +66,13 @@ class LoginController extends Controller
 
     public function home()
     {
-        return 'sukses';
+        $data['active'] = 'home';
+
+        if (Auth::user()->level == 'admin') {
+            return view('admin.home', $data);
+        } else {
+            return view('user.home', $data);
+        }
     }
 
     public function logout()

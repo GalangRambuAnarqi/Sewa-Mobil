@@ -20,8 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('no_hp')->nullable();
             $table->string('alamat')->nullable();
             $table->string('ktp')->nullable();
+            $table->string('nik')->nullable();
             $table->string('password')->nullable();
-            $table->string('foto')->default('avatar.png');
+            $table->string('foto')->default('user/avatar.png');
             $table->string('level')->default('user');
             $table->timestamps();
         });

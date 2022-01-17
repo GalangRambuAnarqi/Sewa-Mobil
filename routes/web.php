@@ -26,3 +26,6 @@ Route::post('/register', [LoginController::class, 'register_tambah'])->name('reg
 
 Route::get('/home', [LoginController::class, 'home'])->name('home')->middleware('auth');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+
+Route::get('/admin/mobil', [AdminController::class, 'mobil'])->name('mobil');
+Route::get('/admin/mobil/tambah', [AdminController::class, 'mobil_tambah'])->name('mobil.tambah');

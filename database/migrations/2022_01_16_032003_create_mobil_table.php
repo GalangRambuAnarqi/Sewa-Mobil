@@ -18,6 +18,7 @@ class CreateMobilTable extends Migration
             $table->string('nama')->nullable();
             $table->string('jenis')->nullable();
             $table->string('kapasitas')->nullable();
+            $table->string('foto')->nullable();
             $table->string('harga_mobil')->nullable();
             $table->string('harga_driver')->nullable();
             $table->timestamps();
