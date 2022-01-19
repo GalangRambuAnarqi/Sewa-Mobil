@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mobil;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -56,6 +57,8 @@ class LoginController extends Controller
         $data = request()->all();
         $data['password'] = Hash::make(request()->password);
 
+        User::create($data);
+
         // Auth
         if (Auth::attempt(['email' => request()->email, 'password' => request()->password])) {
             request()->session()->regenerate();
@@ -69,6 +72,9 @@ class LoginController extends Controller
         $data['active'] = 'home';
 
         if (Auth::user()->level == 'admin') {
+            $data['mobil'] = Mobil::count();
+            $data['user'] = User::where('level', 'user')->count();
+
             return view('admin.home', $data);
         } else {
             return view('user.home', $data);

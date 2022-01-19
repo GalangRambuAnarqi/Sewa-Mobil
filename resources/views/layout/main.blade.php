@@ -22,6 +22,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+    @yield('css')
 
 </head>
 
@@ -52,6 +53,12 @@
             </li>
 
             @if (Auth::user()->level == 'admin')
+                <li class="nav-item {{ $active == 'user' ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('mobil') }}">
+                        <i class="fas fa-fw fa-users"></i>
+                        <span>Data User</span></a>
+                </li>
+
                 <li class="nav-item {{ $active == 'mobil' ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('mobil') }}">
                         <i class="fas fa-fw fa-car"></i>
@@ -63,7 +70,25 @@
                         <i class="fas fa-fw fa-cart-arrow-down"></i>
                         <span>Order</span></a>
                 </li>
+            @else
+                <li class="nav-item {{ $active == 'mobil' ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('user.mobil') }}">
+                        <i class="fas fa-fw fa-car"></i>
+                        <span>Data Mobil</span></a>
+                </li>
+
+                <li class="nav-item {{ $active == 'order' ? 'active' : '' }}">
+                    <a class="nav-link" href="tables.html">
+                        <i class="fas fa-fw fa-cart-arrow-down"></i>
+                        <span>Order Saya</span></a>
+                </li>
             @endif
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('logout') }}">
+                    <i class="fas fa-fw fa-sign-out-alt"></i>
+                    <span>Logout</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

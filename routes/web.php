@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,4 +30,11 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middl
 
 Route::get('/admin/mobil', [AdminController::class, 'mobil'])->name('mobil')->middleware('CekRole:admin');
 Route::get('/admin/mobil/tambah', [AdminController::class, 'mobil_tambah'])->name('mobil.tambah')->middleware('CekRole:admin');
+Route::get('/admin/mobil/edit/{id}', [AdminController::class, 'mobil_edit'])->name('mobil.edit')->middleware('CekRole:admin');
 Route::post('/admin/mobil', [AdminController::class, 'mobil_store'])->name('mobil.store')->middleware('CekRole:admin');
+Route::put('/admin/mobil', [AdminController::class, 'mobil_update'])->name('mobil.update')->middleware('CekRole:admin');
+Route::delete('/admin/mobil', [AdminController::class, 'mobil_delete'])->name('mobil.delete')->middleware('CekRole:admin');
+
+Route::get('/admin/user', [AdminController::class, 'user'])->name('user')->middleware('CekRole:admin');
+
+Route::get('/mobil', [UserController::class, 'mobil'])->name('user.mobil')->middleware('CekRole:user');

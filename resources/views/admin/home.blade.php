@@ -1,10 +1,51 @@
 @extends('layout.main')
 
 @section('content')
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body bg-info text-white">
+                    <div class="w-100 d-flex justify-content-between pb-2 border-bottom mb-2">
+                        <div class="kiri">
+                            <h4 class="mb-0"><i class="fas fa-fw fa-car"></i>&nbsp;Mobil</h4>
+                        </div>
+                        <div class="kanan">
+                            <h4 class="mb-0">{{ $mobil }}</h4>
+                        </div>
+                    </div>
+                    <a href="" class="mb-0 text-white">Selengkapnya&nbsp;<i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body bg-success text-white">
+                    <div class="w-100 d-flex justify-content-between pb-2 border-bottom mb-2">
+                        <div class="kiri">
+                            <h4 class="mb-0"><i class="fas fa-users"></i>&nbsp;Users</h4>
+                        </div>
+                        <div class="kanan">
+                            <h4 class="mb-0">{{ $user }}</h4>
+                        </div>
+                    </div>
+                    <a href="" class="mb-0 text-white">Selengkapnya&nbsp;<i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body bg-primary text-white">
+                    <div class="w-100 d-flex justify-content-between pb-2 border-bottom mb-2">
+                        <div class="kiri">
+                            <h4 class="mb-0"><i class="fas fa-fw fa-cart-arrow-down"></i>&nbsp;Order</h4>
+                        </div>
+                        <div class="kanan">
+                            <h4 class="mb-0">{{ $user }}</h4>
+                        </div>
+                    </div>
+                    <a href="" class="mb-0 text-white">Selengkapnya&nbsp;<i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

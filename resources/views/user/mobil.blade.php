@@ -4,8 +4,6 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Data Mobil</h1>
-        <a href="{{ route('mobil.tambah') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-            <i class="fas fa-plus fa-sm text-white-50"></i> Tambah</a>
     </div>
 
     <div class="row">
@@ -24,15 +22,7 @@
                             <div class="text-secondary mb-2">
                                 <i class="fas fa-users"></i>&nbsp;{{ $m->kapasitas }} Orang
                             </div>
-                            <a href="{{ route('mobil.edit', ['id' => Crypt::encrypt($m->id)]) }}"
-                                class="btn btn-sm btn-warning">Edit</a>
-                            <form action="{{ route('mobil.delete') }}" method="post" class="d-inline"
-                                onsubmit="return confirm('yakin ?')">
-                                @csrf
-                                @method('delete')
-                                <input type="hidden" name="id" value="{{ $m->id }}">
-                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                            </form>
+                            <button class="btn btn-primary btn-sm w-100"><i class="fas fa-cart-plus"></i></button>
                         </div>
                     </div>
                 </div>
