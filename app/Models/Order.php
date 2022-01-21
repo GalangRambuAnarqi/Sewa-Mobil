@@ -10,4 +10,14 @@ class Order extends Model
     use HasFactory;
     protected $table = 'order';
     protected $guarded = ['id'];
+
+    public function mobil()
+    {
+        return $this->belongsTo(Mobil::class, 'mobil_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(Mobil::class, 'mobil_id');
+    }
 }

@@ -8,6 +8,15 @@
             <i class="fas fa-plus fa-sm text-white-50"></i> Tambah</a>
     </div>
 
+    @if (session('sukses'))
+        <div class="alert alert-success alert-dismissible fade show w-50" role="alert">
+            {{ session('sukses') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+
     <div class="row">
         @if (count($mobil) > 0)
             @foreach ($mobil as $m)

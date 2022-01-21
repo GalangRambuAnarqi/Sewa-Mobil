@@ -39,13 +39,6 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="harga_driver" class="col-sm-3 col-form-label">Harga Driver</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="harga_driver" name="harga_driver"
-                                placeholder="( Opsional )">
-                        </div>
-                    </div>
-                    <div class="form-group row">
                         <label for="harga_driver" class="col-sm-3 col-form-label">Foto</label>
                         <div class="col-sm-9">
                             <input type="file" id="image-photo" name="foto" onchange="previewImageUpdate()" required>

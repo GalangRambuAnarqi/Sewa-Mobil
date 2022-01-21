@@ -78,7 +78,7 @@
                 </li>
 
                 <li class="nav-item {{ $active == 'order' ? 'active' : '' }}">
-                    <a class="nav-link" href="tables.html">
+                    <a class="nav-link" href="{{ route('user.order.saya') }}">
                         <i class="fas fa-fw fa-cart-arrow-down"></i>
                         <span>Order Saya</span></a>
                 </li>

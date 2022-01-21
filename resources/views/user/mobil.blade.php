@@ -22,8 +22,15 @@
                             <div class="text-secondary mb-2">
                                 <i class="fas fa-users"></i>&nbsp;{{ $m->kapasitas }} Orang
                             </div>
-                            <button class="btn btn-primary btn-sm w-100" data-toggle="modal"
-                                data-target="#modal{{ $m->id }}"><i class="fas fa-cart-plus"></i>&nbsp;Order</button>
+                            @if ($m->order == 'sudah')
+                                <button class="btn btn-primary btn-sm w-100 disabled" data-toggle="modal"
+                                    data-target="#modal{{ $m->id }}" disabled><i
+                                        class="fas fa-cart-plus"></i>&nbsp;Order</button>
+                            @else
+                                <button class="btn btn-primary btn-sm w-100" data-toggle="modal"
+                                    data-target="#modal{{ $m->id }}"><i
+                                        class="fas fa-cart-plus"></i>&nbsp;Order</button>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -81,6 +88,10 @@
                     </div>
                 </div>
             @endforeach
+        @else
+            <div class="col-12 text-center">
+                <h1>Rental Mobil Belum Tersedia</h1>
+            </div>
         @endif
     </div>
 @endsection

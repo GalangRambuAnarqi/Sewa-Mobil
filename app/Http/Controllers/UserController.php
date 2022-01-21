@@ -22,6 +22,13 @@ class UserController extends Controller
         return view('user.mobil', $data);
     }
 
+    public function order_saya()
+    {
+        $data['active'] = 'user';
+        $data['mobil'] = Order::with('mobil', 'user')->where('user_id', Auth::id())->get();
+        return view('user.order', $data);
+    }
+
     public function order_mobil()
     {
         $data = request()->all();
@@ -32,7 +39,7 @@ class UserController extends Controller
         }
 
         Mobil::find(request()->mobil_id)->update([
-            'status' => "sudah"
+            'order' => "sudah"
         ]);
 
         Order::create($data);

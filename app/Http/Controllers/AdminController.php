@@ -43,7 +43,7 @@ class AdminController extends Controller
         }
 
         Mobil::create($data);
-        return redirect()->route('mobil')->with('sukses', 'Mobil berhasil ditambah');
+        return redirect()->route('mobil')->with('sukses', 'Data Mobil berhasil ditambah');
     }
 
     public function mobil_update()
@@ -58,13 +58,13 @@ class AdminController extends Controller
         }
 
         Mobil::find(request()->id)->update($data);
-        return redirect()->route('mobil')->with('sukses', 'Mobil berhasil diupdate');
+        return redirect()->route('mobil')->with('sukses', 'Data Mobil berhasil diupdate');
     }
 
     public function mobil_delete()
     {
         Mobil::destroy(request()->id);
-        return redirect()->route('mobil')->with('sukses', 'Mobil berhasil dihapus');
+        return redirect()->route('mobil')->with('sukses', 'Data Mobil berhasil dihapus');
     }
 
     public function user()
