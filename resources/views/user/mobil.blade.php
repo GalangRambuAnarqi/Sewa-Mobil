@@ -22,7 +22,61 @@
                             <div class="text-secondary mb-2">
                                 <i class="fas fa-users"></i>&nbsp;{{ $m->kapasitas }} Orang
                             </div>
-                            <button class="btn btn-primary btn-sm w-100"><i class="fas fa-cart-plus"></i></button>
+                            <button class="btn btn-primary btn-sm w-100" data-toggle="modal"
+                                data-target="#modal{{ $m->id }}"><i class="fas fa-cart-plus"></i>&nbsp;Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modal{{ $m->id }}" tabindex="-1"
+                    aria-labelledby="modal{{ $m->id }}Label" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-dark font-weight-bold m-auto"
+                                    id="modal{{ $m->id }}Label">ORDER</h5>
+                            </div>
+                            <div class="modal-body text-dark">
+                                <form action="{{ route('user.order.mobil') }}" method="post"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" name="mobil_id" value="{{ $m->id }}">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <p class="mb-0 font-weight-bold">Nama</p>
+                                                <p>{{ $m->nama }}</p>
+                                            </div>
+                                            <div class="mb-3">
+                                                <p class="mb-0 font-weight-bold">Metode Pembayaran</p>
+                                                <p>Transfer Bank</p>
+                                            </div>
+                                            <div class="mb-3">
+                                                <p class="mb-0 font-weight-bold">No Rekening</p>
+                                                <p>BRI 08221200 a/n RENTALMOBILSMG</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <p class="mb-0 font-weight-bold">Tanggal Pinjam</p>
+                                                <input type="datetime-local" class="form-control" name="tanggal_pinjam"
+                                                    required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <p class="mb-0 font-weight-bold">Tanggal Kembali</p>
+                                                <input type="datetime-local" class="form-control" name="tanggal_kembali"
+                                                    required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <p class="mb-0 font-weight-bold">Bukti Pembayaran</p>
+                                                <input type="file" name="bukti_pembayaran" accept="image/*" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-100">Bayar Sekarang</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>

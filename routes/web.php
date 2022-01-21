@@ -38,3 +38,4 @@ Route::delete('/admin/mobil', [AdminController::class, 'mobil_delete'])->name('m
 Route::get('/admin/user', [AdminController::class, 'user'])->name('user')->middleware('CekRole:admin');
 
 Route::get('/mobil', [UserController::class, 'mobil'])->name('user.mobil')->middleware('CekRole:user');
+Route::post('/order/mobil', [UserController::class, 'order_mobil'])->name('user.order.mobil')->middleware('CekRole:user');
