@@ -54,7 +54,7 @@
 
             @if (Auth::user()->level == 'admin')
                 <li class="nav-item {{ $active == 'user' ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('mobil') }}">
+                    <a class="nav-link" href="{{ route('user') }}">
                         <i class="fas fa-fw fa-users"></i>
                         <span>Data User</span></a>
                 </li>
@@ -81,6 +81,12 @@
                     <a class="nav-link" href="{{ route('user.order.saya') }}">
                         <i class="fas fa-fw fa-cart-arrow-down"></i>
                         <span>Order Saya</span></a>
+                </li>
+
+                <li class="nav-item {{ $active == 'profile' ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('user.order.saya') }}">
+                        <i class="fas fa-fw fa-user-alt"></i>
+                        <span>Profile</span></a>
                 </li>
             @endif
 
@@ -144,10 +150,10 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            <footer class="sticky-footer bg-light">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Rental Mobil Semarang {{ date('Y') }}</span>
                     </div>
                 </div>
             </footer>
@@ -163,26 +169,6 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('js/jquery.min.js') }}"></script>

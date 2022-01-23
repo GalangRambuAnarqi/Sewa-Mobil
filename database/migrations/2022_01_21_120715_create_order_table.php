@@ -17,6 +17,7 @@ class CreateOrderTable extends Migration
             $table->id();
             $table->integer('mobil_id')->nullable();
             $table->integer('user_id')->nullable();
+            $table->string('invoice')->nullable();
             $table->string('tanggal_pinjam')->nullable();
             $table->string('tanggal_kembali')->nullable();
             $table->string('bukti_pembayaran')->nullable();

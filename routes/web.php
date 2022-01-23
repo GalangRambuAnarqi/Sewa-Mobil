@@ -36,7 +36,9 @@ Route::put('/admin/mobil', [AdminController::class, 'mobil_update'])->name('mobi
 Route::delete('/admin/mobil', [AdminController::class, 'mobil_delete'])->name('mobil.delete')->middleware('CekRole:admin');
 
 Route::get('/admin/user', [AdminController::class, 'user'])->name('user')->middleware('CekRole:admin');
+Route::delete('/admin/user', [AdminController::class, 'user_delete'])->name('admin.user.delete')->middleware('CekRole:admin');
 
 Route::get('/mobil', [UserController::class, 'mobil'])->name('user.mobil')->middleware('CekRole:user');
 Route::get('/order-saya', [UserController::class, 'order_saya'])->name('user.order.saya')->middleware('CekRole:user');
+Route::get('/profile', [UserController::class, 'profile_saya'])->name('user.profile.saya')->middleware('CekRole:user');
 Route::post('/order/mobil', [UserController::class, 'order_mobil'])->name('user.order.mobil')->middleware('CekRole:user');

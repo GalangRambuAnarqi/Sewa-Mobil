@@ -46,6 +46,10 @@
                     </div>
                 </div>
             @endforeach
+        @else
+            <div class="alert alert-danger w-100 text-uppercase text-center">
+                Mobil Belum Tersedia
+            </div>
         @endif
     </div>
 @endsection

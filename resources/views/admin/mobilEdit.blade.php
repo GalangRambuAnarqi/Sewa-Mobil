@@ -1,75 +1,61 @@
 @extends('layout.main')
 
 @section('content')
-    <div class="w-100 bg-white rounded shadow-sm p-3">
-        <h1 class="h3 mb-4 text-gray-800">Edit Mobil</h1>
-        <form action="{{ route('mobil.update') }}" method="post" enctype="multipart/form-data">
-            @csrf
-            @method('put')
-            <input type="hidden" name="id" value="{{ $mbl->id }}">
-            <input type="hidden" name="img_lama" value="{{ $mbl->foto }}">
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <div class="form-group row">
-                        <label for="nama" class="col-sm-3 col-form-label">Nama</label>
-                        <div class="col-sm-9">
-                            <input type="text" value="{{ $mbl->nama }}" class="form-control" id="nama" name="nama"
-                                required>
-                        </div>
-                    </div>
-                    {{-- <div class="form-group row">
-                        <label for="jenis" class="col-sm-3 col-form-label">Jenis</label>
-                        <div class="col-sm-9">
-                            <select class="custom-select" required>
-                                <option selected>Pilih ---</option>
-                                <option value="1">Mini Bus</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                    </div> --}}
-                    <div class="form-group row">
-                        <label for="kapasitas" class="col-sm-3 col-form-label">Kapasitas</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="kapasitas" name="kapasitas"
-                                value="{{ $mbl->kapasitas }}" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group row">
-                        <label for="harga_mobil" class="col-sm-3 col-form-label">Harga Mobil</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="harga_mobil" name="harga_mobil" required
-                                value="{{ $mbl->harga_mobil }}">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="harga_driver" class="col-sm-3 col-form-label">Harga Driver</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="harga_driver" name="harga_driver"
-                                placeholder="( Opsional )" value="{{ $mbl->harga_driver }}">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="image-photo" class="col-sm-3 col-form-label">Foto</label>
-                        <div class="col-sm-9">
-                            <input type="file" id="image-photo" name="foto" onchange="previewImageUpdate()">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="image-preview" class="col-sm-3 col-form-label">Review</label>
-                        <div class="col-sm-9">
-                            <img src="{{ asset('storage/' . $mbl->foto) }}" style="height: 80px;width:auto;"
-                                id="image-preview">
+    <h1 class="h3 mb-4 text-gray-800">Edit Mobil</h1>
+    <form action="{{ route('mobil.update') }}" method="post" enctype="multipart/form-data">
+        @csrf
+        @method('put')
+        <input type="hidden" name="id" value="{{ $mbl->id }}">
+        <input type="hidden" name="img_lama" value="{{ $mbl->foto }}">
+        <div class="card mb-3 shadow-sm">
+            <div class="card-header bg-info text-white">
+                <div class="w-100 d-flex justify-content-between">
+                    <h5 class="mb-0">Foto</h5>
+                    <div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="image-photo" onchange="previewImageUpdate()"
+                                accept="image/*" name="foto">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
                         </div>
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-warning">Edit</button>
-            <a href="{{ route('mobil') }}" class="btn btn-secondary">Kembali</a>
-        </form>
-    </div>
+            <div class="card-body">
+                <div class="w-100 text-center">
+                    <img src="{{ asset('storage/' . $mbl->foto) }}" alt="Foto Mobil" id="image-preview"
+                        class="img-fluid m-auto">
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3 shadow-sm">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">Data</h5>
+            </div>
+            <div class="card-body">
+                <div class="form-group row">
+                    <label for="nama" class="col-sm-3 col-form-label">Nama</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="nama" name="nama" value="{{ $mbl->nama }}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="kapasitas" class="col-sm-3 col-form-label">Kapasitas</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="kapasitas" name="kapasitas"
+                            value="{{ $mbl->kapasitas }}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="harga_mobil" class="col-sm-3 col-form-label">Harga Mobil</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="harga_mobil" name="harga_mobil"
+                            value="{{ $mbl->harga_mobil }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-info">Edit</button>
+    </form>
 @endsection
 
 @section('js')

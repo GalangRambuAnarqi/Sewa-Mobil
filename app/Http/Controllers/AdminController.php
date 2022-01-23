@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mobil;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
@@ -70,7 +71,19 @@ class AdminController extends Controller
     public function user()
     {
         $data['active'] = 'user';
-        $data['user'] = Mobil::latest()->get();
+        $data['user'] = User::where('level', 'user')->get();
         return view('admin.user', $data);
+    }
+
+    public function user_delete()
+    {
+        $user = User::find(request()->id);
+
+        if ($user->foto != 'user/avatar.PNG') {
+            Storage::delete($user->foto);
+        }
+
+        $user->delete();
+        return redirect()->route('user')->with('sukses', 'Data User berhasil dihapus');
     }
 }

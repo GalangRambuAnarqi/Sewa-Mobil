@@ -60,7 +60,7 @@
                                                 <p>Transfer Bank</p>
                                             </div>
                                             <div class="mb-3">
-                                                <p class="mb-0 font-weight-bold">No Rekening</p>
+                                                <p class="mb-0 font-weight-bold">Nomor Rekening</p>
                                                 <p>BRI 08221200 a/n RENTALMOBILSMG</p>
                                             </div>
                                         </div>
@@ -90,7 +90,7 @@
             @endforeach
         @else
             <div class="col-12 text-center">
-                <h1>Rental Mobil Belum Tersedia</h1>
+                <h1>Mobil Belum Tersedia</h1>
             </div>
         @endif
     </div>

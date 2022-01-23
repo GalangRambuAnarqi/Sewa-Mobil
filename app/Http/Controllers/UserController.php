@@ -25,14 +25,22 @@ class UserController extends Controller
     public function order_saya()
     {
         $data['active'] = 'user';
-        $data['mobil'] = Order::with('mobil', 'user')->where('user_id', Auth::id())->get();
+        $data['order'] = Order::with('mobil', 'user')->where('user_id', Auth::id())->get();
         return view('user.order', $data);
+    }
+
+    public function profile_saya()
+    {
+        $data['active'] = 'profile';
+        return view('user.profile', $data);
     }
 
     public function order_mobil()
     {
+        // return request();
         $data = request()->all();
         $data['user_id'] = Auth::id();
+        $data['invoice'] = "INV" . date('dmYHis') . Auth::id();
 
         if (request()->hasFile('bukti_pembayaran')) {
             $data['bukti_pembayaran'] = request()->file('bukti_pembayaran')->store('bukti');
