@@ -49,6 +49,7 @@
             </div>
         </div>
         <button type="submit" class="btn btn-info">Tambah</button>
+        <a href="{{ route('mobil') }}" class="btn btn-secondary">Kembali</a>
     </form>
 @endsection
 

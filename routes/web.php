@@ -38,7 +38,14 @@ Route::delete('/admin/mobil', [AdminController::class, 'mobil_delete'])->name('m
 Route::get('/admin/user', [AdminController::class, 'user'])->name('user')->middleware('CekRole:admin');
 Route::delete('/admin/user', [AdminController::class, 'user_delete'])->name('admin.user.delete')->middleware('CekRole:admin');
 
+Route::get('/admin/order', [AdminController::class, 'order'])->name('admin.order')->middleware('CekRole:admin');
+Route::get('/admin/order/{id}', [AdminController::class, 'order_info'])->name('admin.order.info')->middleware('CekRole:admin');
+Route::put('/admin/order/status', [AdminController::class, 'order_status'])->name('admin.order.status')->middleware('CekRole:admin');
+
 Route::get('/mobil', [UserController::class, 'mobil'])->name('user.mobil')->middleware('CekRole:user');
 Route::get('/order-saya', [UserController::class, 'order_saya'])->name('user.order.saya')->middleware('CekRole:user');
 Route::get('/profile', [UserController::class, 'profile_saya'])->name('user.profile.saya')->middleware('CekRole:user');
 Route::post('/order/mobil', [UserController::class, 'order_mobil'])->name('user.order.mobil')->middleware('CekRole:user');
+Route::put('/user/profile', [UserController::class, 'user_profile'])->name('user.profile.edit')->middleware('CekRole:user');
+Route::put('/user/foto', [UserController::class, 'user_foto'])->name('user.foto')->middleware('CekRole:user');
+Route::put('/user/password', [UserController::class, 'user_password'])->name('user.profile.password')->middleware('CekRole:user');

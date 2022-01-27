@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mobil;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -85,5 +86,35 @@ class AdminController extends Controller
 
         $user->delete();
         return redirect()->route('user')->with('sukses', 'Data User berhasil dihapus');
+    }
+
+    public function order()
+    {
+        $data['active'] = 'order';
+        $data['order'] = Order::with('mobil', 'user')->latest()->get();
+        // return $data['order'];
+        return view('admin.order', $data);
+    }
+
+    public function order_info($id)
+    {
+        $data['active'] = 'order';
+        $data['ord'] = Order::with('mobil', 'user')->find(Crypt::decrypt($id));
+        return view('admin.orderInfo', $data);
+    }
+
+    public function order_status()
+    {
+        $ord = Order::find(request()->id);
+
+        Mobil::find(request()->mobil_id)->update([
+            'order' => 'belum'
+        ]);
+
+        $ord->update([
+            'status' => "Selesai"
+        ]);
+
+        return redirect()->route('admin.order')->with('sukses', 'Invoice ' . $ord->invoice . ' selesai order mobil');
     }
 }

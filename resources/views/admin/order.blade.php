@@ -1,20 +1,24 @@
 @extends('layout.main')
 
 @section('content')
-    <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Order</h1>
     </div>
+    @if (session('sukses'))
+        <div class="alert alert-success w-50">
+            {{ session('sukses') }}
+        </div>
+    @endif
     <div class="w-100 table-responsive">
         <table class="table table-striped" id="example">
             <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Invoice</th>
+                    <th scope="col">User</th>
                     <th scope="col">Mobil</th>
-                    <th scope="col">Tanggal Pinjam</th>
-                    <th scope="col">Tanggal Kembali</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,14 +26,28 @@
                     <tr>
                         <th>{{ $loop->iteration }}</th>
                         <td>{{ $o->invoice }}</td>
+                        <td>{{ $o->user->name }}</td>
                         <td>{{ $o->mobil->nama }}</td>
-                        <td>{{ date('d-m-Y H:i', strtotime($o->tanggal_pinjam)) }}</td>
-                        <td>{{ date('d-m-Y H:i', strtotime($o->tanggal_kembali)) }}</td>
                         <td>
                             @if ($o->status == 'Proses Peminjaman')
                                 <span class="badge badge-warning">{{ $o->status }}</span>
                             @else
-                                <span class="badge badge-warning">{{ $o->status }}</span>
+                                <span class="badge badge-success">Selesai</span>
+                            @endif
+                        </td>
+                        <td>
+                            <a href="{{ route('admin.order.info', ['id' => Crypt::encrypt($o->id)]) }}"
+                                class="btn btn-sm btn-info" target="_blank"><i class="fas fa-info-circle"></i></a>
+                            @if ($o->status == 'Proses Peminjaman')
+                                <form action="{{ route('admin.order.status') }}" method="post" class="d-inline-block"
+                                    onsubmit="return confirm('order selesai ?')">
+                                    @csrf
+                                    @method('put')
+                                    <input type="hidden" name="id" value="{{ $o->id }}">
+                                    <input type="hidden" name="mobil_id" value="{{ $o->mobil->id }}">
+                                    <button type="submit" class="btn btn-sm btn-success"><i
+                                            class="fas fa-check"></i></button>
+                                </form>
                             @endif
                         </td>
                     </tr>

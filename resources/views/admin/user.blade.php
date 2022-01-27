@@ -31,7 +31,7 @@
                             @if (empty($u->no_hp))
                                 <span class="badge badge-info">-</span>
                             @else
-                                <span class="badge badge-info">{{ $u->no_hp }}</span>
+                                {{ $u->no_hp }}
                             @endif
                         </td>
                         <td>
@@ -40,7 +40,7 @@
                                 @csrf
                                 @method('delete')
                                 <input type="hidden" name="id" value="{{ $u->id }}">
-                                <button type="submit" class="btn btn-danger"><i
+                                <button type="submit" class="btn btn-sm btn-danger"><i
                                         class="fas fa-trash"></i>&nbsp;Hapus</button>
                             </form>
                         </td>

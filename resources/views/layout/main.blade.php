@@ -66,7 +66,7 @@
                 </li>
 
                 <li class="nav-item {{ $active == 'order' ? 'active' : '' }}">
-                    <a class="nav-link" href="tables.html">
+                    <a class="nav-link" href="{{ route('admin.order') }}">
                         <i class="fas fa-fw fa-cart-arrow-down"></i>
                         <span>Order</span></a>
                 </li>
@@ -74,7 +74,7 @@
                 <li class="nav-item {{ $active == 'mobil' ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('user.mobil') }}">
                         <i class="fas fa-fw fa-car"></i>
-                        <span>Data Mobil</span></a>
+                        <span>Mobil</span></a>
                 </li>
 
                 <li class="nav-item {{ $active == 'order' ? 'active' : '' }}">
@@ -84,7 +84,7 @@
                 </li>
 
                 <li class="nav-item {{ $active == 'profile' ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('user.order.saya') }}">
+                    <a class="nav-link" href="{{ route('user.profile.saya') }}">
                         <i class="fas fa-fw fa-user-alt"></i>
                         <span>Profile</span></a>
                 </li>
