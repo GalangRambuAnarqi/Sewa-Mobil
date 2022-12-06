@@ -74,6 +74,12 @@
                             <p class="mb-0">: {{ $ord->user->nik }}</p>
                         </div>
                     </div>
+                    <div class="row mb-3">
+                        <p class="col-sm-4 mb-0">Foto KTP</p>
+                        <div class="col-sm-8">
+                            <img src="{{ asset('storage/' . $ord->user->ktp_foto) }}" alt="" style="height: 150px;">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

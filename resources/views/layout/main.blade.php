@@ -115,7 +115,8 @@
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+              
+                    <marquee direction="right" width="400vw" scrollamount="2" align="center" behavior="alternate"><h5>PT WIBI RENT CAR</h5> </marquee>
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>

@@ -1,5 +1,5 @@
 <?php
-
+// changes
 namespace App\Http\Controllers;
 
 use App\Models\Mobil;
@@ -39,6 +39,10 @@ class UserController extends Controller
 
     public function order_mobil()
     {
+        if (Auth::user()->ktp_foto == 'user/avatar.png' || Auth::user()->ktp_foto == '') {
+            return redirect()->route('user.profile.saya')->with('sukses', 'Sebelum order, foto ktp wajib diunggah');
+        }
+
         // return request();
         $data = request()->all();
         $data['user_id'] = Auth::id();
@@ -53,7 +57,7 @@ class UserController extends Controller
         ]);
 
         Order::create($data);
-        return redirect()->route('user.mobil');
+        return redirect()->route('user.mobil')->with('sukses', 'Berhasil mengorder');
     }
 
     public function user_profile()
@@ -79,17 +83,17 @@ class UserController extends Controller
 
     public function user_ktp()
     {
-        if (Auth::user()->ktp != 'user/avatar.png') {
-            Storage::delete(Auth::user()->foto);
+        if (Auth::user()->ktp_foto != 'ktp/avatar.png') {
+            Storage::delete(Auth::user()->ktp_foto);
         }
 
-        $path = request()->file('foto')->store('user');
+        $path = request()->file('ktp_foto')->store('ktp');
 
         User::find(Auth::id())->update([
-            'foto' => $path
+            'ktp_foto' => $path
         ]);
 
-        return redirect()->route('user.profile.saya')->with('sukses', 'Foto Profile Berhasil Diubah');
+        return redirect()->route('user.profile.saya')->with('sukses', 'Foto KTP Berhasil Diubah');
     }
 
     public function user_password()

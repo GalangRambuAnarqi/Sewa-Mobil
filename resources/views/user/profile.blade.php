@@ -120,7 +120,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="w-100 text-center">
-                            <img src="{{ asset('storage/' . Auth::user()->foto) }}" class="img-fluid">
+                            <img src="{{ asset('storage/' . Auth::user()->ktp_foto) }}" class="img-fluid">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -128,7 +128,7 @@
                             @csrf
                             @method('put')
                             <div class="custom-file mb-3">
-                                <input type="file" class="custom-file-input" name="ktp" id="customFile" required
+                                <input type="file" class="custom-file-input" name="ktp_foto" id="customFile" required
                                     accept="image/*">
                                 <label class="custom-file-label" for="customFile">Choose file</label>
                             </div>
@@ -140,3 +140,4 @@
         </div>
     </div>
 @endsection
+{{-- change --}}

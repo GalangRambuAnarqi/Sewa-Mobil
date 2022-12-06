@@ -5,7 +5,14 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Data Mobil</h1>
     </div>
-
+    @if (session('sukses'))
+    <div class="alert alert-success w-50 mb-3 alert-dismissible fade show" role="alert">
+        {{ session('sukses') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
     <div class="row">
         @if (count($mobil) > 0)
             @foreach ($mobil as $m)
