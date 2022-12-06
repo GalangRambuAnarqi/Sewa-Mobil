@@ -21,6 +21,8 @@
                     aria-controls="nav-password" aria-selected="false">Password</a>
                 <a class="nav-link" id="nav-foto-tab" data-toggle="tab" href="#nav-foto" role="tab"
                     aria-controls="nav-foto" aria-selected="false">Foto</a>
+                    <a class="nav-link" id="nav-ktp-tab" data-toggle="tab" href="#nav-ktp" role="tab"
+                        aria-controls="nav-ktp" aria-selected="false">KTP</a>
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
@@ -110,6 +112,27 @@
                                 <label class="custom-file-label" for="customFile">Choose file</label>
                             </div>
                             <button type="submit" class="btn btn-primary">Edit Foto</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-ktp" role="tabpanel" aria-labelledby="nav-ktp-tab">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="w-100 text-center">
+                            <img src="{{ asset('storage/' . Auth::user()->foto) }}" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <form action="{{ route('user.ktp') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            @method('put')
+                            <div class="custom-file mb-3">
+                                <input type="file" class="custom-file-input" name="ktp" id="customFile" required
+                                    accept="image/*">
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Edit Ktp</button>
                         </form>
                     </div>
                 </div>

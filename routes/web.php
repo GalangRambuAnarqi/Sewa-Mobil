@@ -48,4 +48,5 @@ Route::get('/profile', [UserController::class, 'profile_saya'])->name('user.prof
 Route::post('/order/mobil', [UserController::class, 'order_mobil'])->name('user.order.mobil')->middleware('CekRole:user');
 Route::put('/user/profile', [UserController::class, 'user_profile'])->name('user.profile.edit')->middleware('CekRole:user');
 Route::put('/user/foto', [UserController::class, 'user_foto'])->name('user.foto')->middleware('CekRole:user');
+Route::put('/user/ktp', [UserController::class, 'user_ktp'])->name('user.ktp')->middleware('CekRole:user');
 Route::put('/user/password', [UserController::class, 'user_password'])->name('user.profile.password')->middleware('CekRole:user');

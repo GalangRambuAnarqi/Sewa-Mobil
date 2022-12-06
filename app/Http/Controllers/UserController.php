@@ -77,6 +77,21 @@ class UserController extends Controller
         return redirect()->route('user.profile.saya')->with('sukses', 'Foto Profile Berhasil Diubah');
     }
 
+    public function user_ktp()
+    {
+        if (Auth::user()->ktp != 'user/avatar.png') {
+            Storage::delete(Auth::user()->foto);
+        }
+
+        $path = request()->file('foto')->store('user');
+
+        User::find(Auth::id())->update([
+            'foto' => $path
+        ]);
+
+        return redirect()->route('user.profile.saya')->with('sukses', 'Foto Profile Berhasil Diubah');
+    }
+
     public function user_password()
     {
         request()->validate([
